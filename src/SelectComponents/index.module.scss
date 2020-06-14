@@ -1,0 +1,560 @@
+.container {
+  height: 100vh;
+  min-width: 1100px;
+  font-size: 14px;
+  background-color: #EEE;
+  display: flex;
+  justify-content: center;
+
+  .btnGroup {
+    width: 1030px;
+    height: 400px;
+    border-radius: 6px;
+    background: #FFF;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, .08);
+    padding: 20px;
+    margin-top: 100px;
+    // 按钮基础样式
+    .btn {
+      vertical-align: top;
+      width: 160px;
+      height: 44px;
+      margin: 20px;
+      display: inline-block;
+      text-align: center;
+      line-height: 44px;
+      border-radius: 4px;
+      color: #FFF;
+      cursor: pointer;
+    }
+
+    // 渐变样式
+    .transition {
+      color: #89BDD3;
+      height: 42px;
+      line-height: 42px;
+      width: 158px;
+      border: 1px solid #89BDD3;
+      opacity: 1;
+      transition: all .6s;
+
+      &:hover {
+        background: #89BDD3;
+        color: #FFF;
+      }
+
+      &:active {
+        opacity: .7;
+      }
+    }
+
+    // 玻璃闪亮样式
+    .shiny {
+      height: 42px;
+      line-height: 42px;
+      width: 158px;
+      color: #2194E0;
+      border: 1px solid #2194E0;
+      transition: all 0.2s ease-in-out;
+      position: relative;
+      opacity: 1;
+      overflow: hidden;
+      &::before {
+        content: "";
+        background-color: rgba(255, 255, 255, 0.5);
+        height: 100%;
+        width: 3em;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -4.5em;
+        transform: skewX(-45deg) translateX(0);
+        transition: none;
+        z-index: 100;
+      }
+
+      &:hover {
+        background-color: #2194E0;
+        color: #FFF;
+      }
+
+      &:hover::before {
+        transform: skewX(-45deg) translateX(260px);
+        transition: all 0.5s ease-in-out;
+      }
+
+      &:active {
+        opacity: .8;
+      }
+    }
+
+    // 按钮文字移动出现箭头样式
+    .translate {
+      width: 160px;
+      height: 42px;
+      line-height: 42px;
+      background: #0D6;
+      width: 158px;
+      border: 1px solid #0D6;
+      overflow: hidden;
+      transition: all 0.5s;
+      opacity: 1;
+
+      &:hover, &:active {
+        color: #0C5;
+        border-color: #0C5;
+        background: #FFF;
+      }
+
+      &:active {
+        opacity: .8;
+      }
+
+      & span {
+        display: inline-block;
+        position: relative;
+        padding-right: 0;
+        transition: padding-right 0.5s;
+      }
+
+      & span::after {
+        content: ' ';
+        position: absolute;
+        top: calc(50% + 2.5px);
+        right: -30px;
+        opacity: 0;
+        width: 10px;
+        height: 10px;
+        margin-top: -10px;
+        background: rgba(0, 0, 0, 0);
+        border: 2px solid #FFF;
+        border-top: none;
+        border-right: none;
+        transition: opacity 0.5s, top 0.5s, right 0.5s;
+        transform: rotate(-140deg);
+      }
+    
+      &:hover span, &:active span {
+        padding-right: 30px;
+      }
+    
+      &:hover span::after, &:active span::after {
+        transition: opacity 0.5s, top 0.5s, right 0.5s;
+        opacity: 1;
+        border-color: #0C5;
+        right: 0;
+        transform: rotate(-140deg);
+      }
+    }
+
+    // 扩展效果
+    .extend {
+      background: #C147E6;
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+      opacity: 1;
+      transition: all .3s;
+      
+      &:active {
+        opacity: .8;
+      }
+
+      &:hover > .anim {
+        animation: anim-out 0.75s;
+      }
+
+      &:hover > .anim::after {
+        animation: anim-out-pseudo 0.75s;
+      }
+
+      .anim {
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: -1;
+
+        &::before {
+          position: relative;
+          content: '';
+          display: block;
+          margin-top: 100%;
+        }
+      
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          border-radius: 50%;
+        }
+      }
+
+      @-webkit-keyframes anim-out {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    
+      @-moz-keyframes anim-out {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    
+      @keyframes anim-out {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    
+      @-webkit-keyframes anim-out-pseudo {
+        0% {
+          background: rgba(0, 0, 0, 0.35);
+        }
+        100% {
+          background: transparent;
+        }
+      }
+    
+      @-moz-keyframes anim-out-pseudo {
+        0% {
+          background: rgba(0, 0, 0, 0.35);
+        }
+        100% {
+          background: transparent;
+        }
+      }
+    
+      @keyframes anim-out-pseudo {
+        0% {
+          background: rgba(0, 0, 0, 0.35);
+        }
+        100% {
+          background: transparent;
+        }
+      }
+    }
+
+    // 小圆点循环效果
+    .loop {
+      position: relative;
+      width: 158px;
+      color: #FA5555;
+      height: 40px;
+      line-height: 42px;
+      border: 2px solid #FA5555;
+      border-radius: 14px;
+      text-transform: uppercase;
+      &::before, &::after {
+        box-sizing: border-box;
+      }
+
+      &:hover .dot, &:focus .dot {
+        animation: atom 2s infinite linear;
+        display: block;
+      }
+
+      .dot {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 32px;
+        height: 100%;
+        border-radius: 50%;
+        transition: all 300ms ease;
+        display: none;
+        &::after {
+          content: '';
+          position: absolute;
+          top: -6px;
+          height: 5px;
+          width: 5px;
+          background: #FA5555;
+          border-radius: 50%;
+          border: 4px solid #FA5555;
+          box-shadow: 0 0 .7em #FFF,
+          0 0 2em #FA5555;
+        }
+      }
+    
+      /*calc(160px - 36px)  按钮宽度 - dot宽度 - 边框宽度*/
+      @keyframes atom {
+        0% {
+          transform: translateX(0) rotate(0);
+        }
+        30% {
+          transform: translateX(calc(160px - 36px)) rotate(0);
+        }
+        50% {
+          transform: translateX(calc(160px - 36px)) rotate(180deg);
+        }
+        80% {
+          transform: translateX(0) rotate(180deg);
+        }
+        100% {
+          transform: translateX(0) rotate(360deg);
+        }
+      }
+    }
+  
+    // 渐变效果
+    .gradient {
+      transition: 0.5s;
+      background-size: 200% auto;
+      &:hover {
+        background-position: right center;
+      }
+    }
+  
+    .gradientOne {
+      background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+    }
+  
+    .gradientTwo {
+      background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+    }
+  
+    .gradientThree {
+      background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+    }
+  
+    .gradientFour {
+      background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+    }
+  
+    .gradientFive {
+      background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
+    }
+
+    // 渲染效果
+    .render {
+      border: 1px solid #C147E6;
+      color: #C147E6;
+      width: 158px;
+      height: 42px;
+      line-height: 42px;
+      position: relative;
+      z-index: 1;
+      text-transform: uppercase;
+
+      &, &::after {
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+
+      &:hover {
+        color: #fff;
+      }
+
+      &::before, &::after {
+        background: #C147E6;
+        content: '';
+        position: absolute;
+        z-index: -2;
+        border-radius: 3px;
+      }
+    }
+  
+    .renderTop::after {
+      height: 0;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  
+    .renderTop:hover:after {
+      height: 100%;
+    }
+  
+    .renderLeft::after {
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 0;
+    }
+  
+    .renderLeft:hover:after {
+      width: 100%;
+    }
+  
+    .renderIn::after {
+      height: 0;
+      left: 50%;
+      top: 50%;
+      width: 0;
+    }
+  
+    .renderIn:hover:after {
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  
+    .renderOut::before {
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  
+    .renderOut::after {
+      background: #fff;
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  
+    .renderOut:hover:after {
+      height: 0;
+      left: 50%;
+      top: 50%;
+      width: 0;
+    }
+  
+    .renderSkew {
+      overflow: hidden;
+    }
+  
+    .renderSkew::after {
+      height: 100%;
+      left: -35%;
+      top: 0;
+      transform: skew(50deg);
+      transition-duration: 0.6s;
+      transform-origin: top left;
+      width: 0;
+    }
+  
+    .renderSkew:hover:after {
+      height: 100%;
+      width: 135%;
+    }
+
+    // 原子效果
+    .atom {
+      background: none;
+      border: 1px solid;
+      width: 158px;
+      height: 42px;
+      line-height: 42px;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      transition: color 1s;
+    }
+  
+    .atomOne {
+      color: #9c89f7;
+      &:hover {
+        animation: halftone 1s forwards;
+        background: radial-gradient(circle, #9c89f7 0.2em, transparent 0.25em) 0 0/1.25em 1.25em, radial-gradient(circle, #9c89f7 0.2em, transparent 0.25em) 6.25em 6.25em/1.25em 1.25em;
+        color: #e4f789;
+      }
+    }
+  
+    @keyframes halftone {
+      100% {
+        background-size: 2.375em 2.375em, 0.1em 0.1em;
+      }
+    }
+  
+    .atomTwo {
+      color: #82f6d8;
+      &:hover {
+        animation: stripes-move 0.75s infinite linear;
+        background: repeating-linear-gradient(45deg, #82f6d8 0, #82f6d8 0.25em, transparent 0.25em, transparent 0.5em);
+        color: #f682a0;
+      }
+    }
+  
+    @keyframes stripes-move {
+      100% {
+        background-position: 5em 0px;
+      }
+    }
+  
+    .atomThree {
+      color: #d3f169;
+      &:hover {
+        animation: sawtooth 0.35s infinite linear;
+        background: linear-gradient(45deg, #d3f169 0.5em, transparent 0.5em) 0 0/1em 1em, linear-gradient(-45deg, #d3f169 0.5em, transparent 0.5em) 0 0/1em 1em;
+        color: #8769f1;
+      }
+    }
+  
+    @keyframes sawtooth {
+      100% {
+        background-position: 1em 0;
+      }
+    }
+  
+    .atomFour {
+      color: #eea163;
+      &:hover {
+        animation: zigzag 1s linear infinite;
+        background: linear-gradient(135deg, rgba(238, 161, 99, 0.25) 0.25em, transparent 0.25em) -0.5em 0, linear-gradient(225deg, rgba(238, 161, 99, 0.25) 0.25em, transparent 0.25em) -0.5em 0, linear-gradient(315deg, rgba(238, 161, 99, 0.25) 0.25em, transparent 0.25em) 0 0, linear-gradient(45deg, rgba(238, 161, 99, 0.25) 0.25em, transparent 0.25em) 0 0;
+        background-size: 0.75em 0.75em;
+        color: #63b0ee;
+      }
+    }
+  
+    @keyframes zigzag {
+      100% {
+        background-position: 1em 0, 1em 0, -0.75em 0, -0.75em 0;
+      }
+    }
+  
+    .atomFive {
+      color: #f9879b;
+      &:hover {
+        animation: pulse 1s ease-in infinite;
+        background: radial-gradient(circle, rgba(249, 135, 155, 0.25) 43%, transparent 50%) 0 0/1em 1em, radial-gradient(circle, rgba(249, 135, 155, 0.25) 43%, transparent 50%) 0.5em 0.5em/2em 2em;
+        color: #0bdcb7;
+      }
+    }
+  
+    @keyframes pulse {
+      50% {
+        background-position: 0.66em 0.66em, -0.33em -0.33em;
+      }
+      100% {
+        background-size: 2em 2em, 1em 1em;
+        background-position: -1.5em -1.5em, -1em -1em;
+      }
+    }
+  
+    // 按钮按下效果
+    .press {
+      height: 44px;
+      line-height: 44px;
+      background: #55acee;
+      transition: all .5s;
+      box-shadow: 0px 5px 0px 0px #3486d5;
+      &:hover {
+        background-color: #6FC6FF;
+      }
+
+      &:active {
+        transform: translate(0px, 4px);
+        -webkit-transform: translate(0px, 4px);
+        box-shadow: 0px 1px 0px 0px #3486d5;
+      }
+    }
+  }
+}

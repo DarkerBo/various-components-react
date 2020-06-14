@@ -1,0 +1,39 @@
+.container {
+  // 开启bfc，解决margin-top重叠问题
+  overflow: hidden;
+  .bigBox {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    margin: 100px auto 0;
+    border: 2px red solid;
+  }
+
+  .title {
+    font-size: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .parent {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-y: auto;
+  }
+
+  .children {
+    height: 1200px;
+    // 开启bfc，解决margin-top重叠问题
+    overflow: hidden;
+    .box {
+      height: 100px;
+      width: 100px;
+      background-color: #bfa;
+      margin: 600px auto 0;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+
+  .btn-group {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: skyblue;
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+
+  .page {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+  }
+
+  .page1 {
+    background-color: #5864ff;
+  }
+
+  .page2 {
+    background-color: #86da47;
+  }
+
+  .page3 {
+    background-color: #ed7960;
+  }
+
+  .page4 {
+    background-color: #f5bb4a;
+  }
+}

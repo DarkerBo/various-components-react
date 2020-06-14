@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import styles from './App.module.scss';
+import GoBackBtn from './common/GoBackBtn';
+import SelectComponents from './SelectComponents';
+import WaterMark from './WaterMark';
+import IntersectionObserverPage from './IntersectionObserverPage';
+import AnchorPoint from './AnchorPoint';
+import LoopPlayback from './LoopPlayback';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className={styles.App}>
+        <div className={styles.goBackContainer}>
+          <Link to="/">
+            <GoBackBtn />
+          </Link>
+        </div>
+          <div>
+            <Switch>
+              <Route path="/" exact component={SelectComponents} />
+              <Route path="/watermark" component={WaterMark} />
+              <Route path="/intersectionObserverPage" component={IntersectionObserverPage} />
+              <Route path="/anchorPoint" component={AnchorPoint} />
+              <Route path="/loopPlayback" component={LoopPlayback} />
+            </Switch>
+          </div>
+      </div>
+    </Router>
   );
 }
 
