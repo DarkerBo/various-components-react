@@ -37,7 +37,7 @@
     overflow: hidden;
 
     .labelContainer {
-      width: 100%;
+      width: auto; // 可加可不加
       display: flex;
       .labelItem {
         min-width: 100px;
