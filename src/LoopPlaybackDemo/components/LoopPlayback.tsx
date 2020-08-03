@@ -32,11 +32,10 @@ const LoopPlayback: React.FC<IProps> = (props) => {
     // if (scrollElement[scrollDirection] === 0) return;
 
     // 若内容高度小于外框高度，则不循环滚动,改成只包含一个内容
-    if (listElement[offsetDirection] >= scrollElement[scrollDirection] / 2) {
+    if (listElement[offsetDirection] >= (scrollElement[scrollDirection] / 2)) {
       setIsSwiper(false);
       return;
     }
-    setIsSwiper(true);
 
     // 生成随机动画事件名，避免重复，不能直接用Math.random，有小数点的话keyframes的name无法解析
     const keyframesName = `scroll${new Date().valueOf()}`;
@@ -55,7 +54,7 @@ const LoopPlayback: React.FC<IProps> = (props) => {
 
   useEffect(() => {
     scrollData();
-  })
+  }, [scrollData]);
 
   return (
     <div className={listClassName} ref={listRef}>

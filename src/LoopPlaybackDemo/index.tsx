@@ -4,7 +4,7 @@ import LoopPlayback from './components/LoopPlayback';
 
 const LoopPlaybackDemo: React.FC = () => {
 
-  const verticalData = useRef<string[]>(['aaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff', 'ggg', 'hhh', 'iii', 'jjj', 'kkk', 'lll', 'mmm']);
+  const verticalData = useRef<string[]>(['aaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff', 'ggg', 'hhh', 'iii', 'jjj', 'kkk', 'lll', 'mmm', 'lll', 'ooo']);
 
   const horizontalData = useRef<{label: string, color: string}[]>([
     { label: 'aaa', color: 'pink' },
@@ -13,6 +13,7 @@ const LoopPlaybackDemo: React.FC = () => {
     { label: 'ddd', color: 'purple' },
     { label: 'eee', color: 'green' },
     { label: 'fff', color: 'orange' },
+    { label: 'ggg', color: '#bfa' },
   ]);
 
 
