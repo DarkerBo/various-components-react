@@ -1,12 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styles from './index.module.scss';
 import LoopPlayback from './components/LoopPlayback';
 
+type ItemType = {
+  label: string;
+  color: string;
+}
+
 const LoopPlaybackDemo: React.FC = () => {
 
-  const verticalData = useRef<string[]>(['aaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff', 'ggg', 'hhh', 'iii', 'jjj', 'kkk', 'lll', 'mmm', 'lll', 'ooo']);
+  const [verticalData, setVerticalData] = useState<ItemType[]>([]);
 
-  const horizontalData = useRef<{label: string, color: string}[]>([
+  const [horizontalData, setHorizontalData] = useState<ItemType[]>([]);
+
+  const getInitialData = useCallback(() => {
+    // 垂直容器数据
+
+    const verticalArr = [
     { label: 'aaa', color: 'pink' },
     { label: 'bbb', color: 'skyblue' },
     { label: 'ccc', color: 'yellow' },
@@ -14,31 +24,50 @@ const LoopPlaybackDemo: React.FC = () => {
     { label: 'eee', color: 'green' },
     { label: 'fff', color: 'orange' },
     { label: 'ggg', color: '#bfa' },
-  ]);
+  ];
+
+    setVerticalData(() => verticalArr); // 修改对象类state要用函数式
+
+    // 水平容器数据
+    const horizontalArr = [
+      { label: 'aaa', color: 'pink' },
+      { label: 'bbb', color: 'skyblue' },
+      { label: 'ccc', color: 'yellow' },
+      { label: 'ddd', color: 'purple' },
+      { label: 'eee', color: 'green' },
+      { label: 'fff', color: 'orange' },
+      { label: 'ggg', color: '#bfa' },
+    ];
+
+    setHorizontalData(() => horizontalArr);// 修改对象类state要用函数式
+
+  }, [])
+
+  useEffect(() => {
+    getInitialData();
+  }, [getInitialData])
 
 
   return (
     <div className={styles.container}>
       {/* 
-        * 垂直 + 子项高度（或宽度）百分比例子
-        百分比需要定义LoopPlayback里面的scorllRef的高度（或宽度），通过percentage和totalCount计算它的百分比 
-        子项（这里就是li）的高度或（宽度）百分比是根据ul，ul是scorllRef的高度或（宽度）的100%
-        则每个子项的高度或（宽度）应该为100 / 子项的总数得出每个子项的高度或（宽度）的百分比
+        * 垂直 + 子项高度（或宽度）固定值例子
       */}
       <LoopPlayback
         direction="vertical"
+        listenData={verticalData}
         listClassName={styles.verticalContainer}
-        percentage={0.2}
-        totalCount={verticalData.current.length}
       >
         <ul className={styles.ul}>
-          {verticalData.current.map((item, index) => (
+          {verticalData.map((item, index) => (
             <li 
               className={styles.li} 
               key={index}
-              style={{ height: `${100 / verticalData.current.length}%` }}
+              style={{
+                backgroundColor: item.color,
+              }}
             >
-              <span>{item}</span>
+              <span>{item.label}</span>
             </li>
           ))}
         </ul>
@@ -49,11 +78,12 @@ const LoopPlaybackDemo: React.FC = () => {
       */}
       <LoopPlayback
         direction="horizontal"
+        listenData={horizontalData}
         listClassName={styles.horizontalContainer}
       >
         <div className={styles.labelContainer}>
           {
-            horizontalData.current.map((item, index) => (
+            horizontalData.map((item, index) => (
               <div 
                 className={styles.labelItem} 
                 key={index}
