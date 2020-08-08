@@ -7,6 +7,8 @@ import WaterMark from './WaterMark';
 import IntersectionObserverPage from './IntersectionObserverPage';
 import AnchorPoint from './AnchorPoint';
 import LoopPlaybackDemo from './LoopPlaybackDemo';
+import MapDown from './MapDown';
+import MapShowArea from './MapShowArea';
 
 const App: React.FC = () => {
   return (
@@ -24,6 +26,8 @@ const App: React.FC = () => {
               <Route path="/intersectionObserverPage" component={IntersectionObserverPage} />
               <Route path="/anchorPoint" component={AnchorPoint} />
               <Route path="/loopPlayback" component={LoopPlaybackDemo} />
+              <Route path="/mapDown" component={MapDown} />
+              <Route path="/mapShowArea" component={MapShowArea} />
             </Switch>
           </div>
       </div>

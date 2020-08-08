@@ -24,11 +24,17 @@ const App: React.FC = () => {
             <span>循环播放</span>
           </div>
         </Link>
-        <div className={`${styles.btn} ${styles.loop}`}>
-          <span>按钮5</span>
-          <div className={styles.dot} />
-        </div>
-        <div className={`${styles.btn} ${styles.gradient} ${styles.gradientOne}`}>按钮6</div>
+        <Link to="/mapDown">
+          <div className={`${styles.btn} ${styles.loop}`}>
+            <span>地图下钻</span>
+            <div className={styles.dot} />
+          </div>
+        </Link>
+        <Link to="/mapShowArea">
+          <div className={`${styles.btn} ${styles.gradient} ${styles.gradientOne}`}>
+            地图地区分层
+          </div>
+        </Link>
         <div className={`${styles.btn} ${styles.gradient} ${styles.gradientTwo}`}>按钮7</div>
         <div className={`${styles.btn} ${styles.gradient} ${styles.gradientThree}`}>按钮8</div>
         <div className={`${styles.btn} ${styles.gradient} ${styles.gradientFour}`}>按钮9</div>
