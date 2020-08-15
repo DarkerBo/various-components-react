@@ -30,8 +30,6 @@ const LoopPlayback: React.FC<IProps> = (props) => {
     // state存储的数据data一开始渲染为空，因此为了性能刚开始的这个情况return掉
     // if (scrollElement[scrollDirection] === 0) return;
 
-    console.log(scrollElement[scrollDirection], '111');
-
     // 若内容高度小于外框高度，则不循环滚动,改成只包含一个内容
     if (listElement[offsetDirection] >= scrollElement[scrollDirection]) {
       setIsSwiper(false);
