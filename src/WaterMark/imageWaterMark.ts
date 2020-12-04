@@ -3,6 +3,8 @@
  * @param {HTMLImageElement} imageRef 水印imgdom对象，该对象应该饱和(必填)
  * @param {Object} imgObj 需要加的本地图片对象(必填)
  * @param {string} content 水印内容(必填)
+ * @param {number} width 水印canvas的宽度
+ * @param {number} height 水印canvas的高度
  * @param {number} rotate 水印旋转角度
  * @param {number} textX 水印文本的X坐标
  * @param {number} textY 水印文本的Y坐标
@@ -16,6 +18,8 @@ export const imageWatermark = (
   imageRef: HTMLImageElement,
   imgObj: string,
   content: string,
+  width = 200,
+  height = 150,
   rotate = 0,
   textX = 0,
   textY = 0,
@@ -31,10 +35,10 @@ export const imageWatermark = (
   // 可以考虑在img.orrer中做图片加载失败时的处理
   img.onload = function() {
     const canvas = document.createElement('canvas');
-    canvas.width = img.width;
-    canvas.height = img.height;
+    canvas.width = width;
+    canvas.height = height;
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-    ctx.drawImage(img, 0, 0);
+    ctx.drawImage(img, 0, 0, width, height);
     ctx.textAlign = textAlign;
     ctx.textBaseline = textBaseline;
     ctx.font = font;
@@ -42,7 +46,7 @@ export const imageWatermark = (
     ctx.fillStyle = fillStyle;
     ctx.fillText(content, textX, textY);
 
-    // 生成base64图片地址
+    // 生成新图片的base64地址
     const base64Url = canvas.toDataURL();
     imageRef.src = base64Url;
   };

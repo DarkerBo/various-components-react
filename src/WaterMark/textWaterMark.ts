@@ -7,11 +7,11 @@
  * @param {number} rotate 水印旋转角度
  * @param {number} textX 水印文本的X坐标
  * @param {number} textY 水印文本的Y坐标
+ * @param {number} zIndex 水印层级
  * @param {string} fillStyle 水印文字颜色和透明度
  * @param {string} font 水印文字大小和字体
  * @param {CanvasTextAlign} textAlign 水印文本的文本对齐方式
  * @param {CanvasTextBaseline} textBaseline 当前水印文本基线
- * @param {number} zIndex 水印层级
  */
 
 export const textWatermark = (
@@ -22,11 +22,11 @@ export const textWatermark = (
   rotate = 30,
   textX = width / 2,
   textY = height / 2,
+  zIndex = 1000,
   fillStyle = 'rgba(184, 184, 184, 0.9)',
   font = '20px microsoft yahei',
   textAlign: CanvasTextAlign = 'center',
   textBaseline: CanvasTextBaseline = 'middle',
-  zIndex = 1000
 ) => {
   const canvas = document.createElement('canvas');
 
@@ -90,11 +90,11 @@ export const textWatermark = (
           rotate,
           textX,
           textY,
+          zIndex,
           fillStyle,
           font,
           textAlign,
           textBaseline,
-          zIndex
         );
       }
     }
