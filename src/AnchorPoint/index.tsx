@@ -62,12 +62,8 @@ const AnchorPoint: React.FC = () => {
     window.requestAnimationFrame(step);
   }
 
-  const handleScroll = (e: any) => {
-    // console.log(e.target.scrollTop);
-  }
-
   return (
-    <div className={styles.container} ref={scrollRef} onScroll={handleScroll}>
+    <div className={styles.container} ref={scrollRef}>
       <div className={styles['btn-group']} ref={btnGroupRef}>
         <button onClick={() => handleClick(Page1)}>Page1</button>
         <button onClick={() => handleClick(Page2)}>Page2</button>
