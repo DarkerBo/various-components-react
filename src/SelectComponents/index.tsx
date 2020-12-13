@@ -32,7 +32,7 @@ const App: React.FC = () => {
         </Link>
         <Link to="/mapShowArea">
           <div className={`${styles.btn} ${styles.gradient} ${styles.gradientOne}`}>
-            地图地区分层
+            地图地区
           </div>
         </Link>
         <div className={`${styles.btn} ${styles.gradient} ${styles.gradientTwo}`}>按钮7</div>
