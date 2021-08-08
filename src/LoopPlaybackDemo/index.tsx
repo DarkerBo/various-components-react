@@ -17,14 +17,14 @@ const LoopPlaybackDemo: React.FC = () => {
     // 垂直容器数据
 
     const verticalArr = [
-    { label: 'aaa', color: 'pink' },
-    { label: 'bbb', color: 'skyblue' },
-    { label: 'ccc', color: 'yellow' },
-    { label: 'ddd', color: 'purple' },
-    { label: 'eee', color: 'green' },
-    { label: 'fff', color: 'orange' },
-    { label: 'ggg', color: '#bfa' },
-  ];
+      { label: 'aaa', color: 'pink' },
+      { label: 'bbb', color: 'skyblue' },
+      { label: 'ccc', color: 'yellow' },
+      { label: 'ddd', color: 'purple' },
+      { label: 'eee', color: 'green' },
+      { label: 'fff', color: 'orange' },
+      { label: 'ggg', color: '#bfa' },
+    ];
 
     setVerticalData(() => verticalArr); // 修改对象类state要用函数式
 
@@ -50,7 +50,41 @@ const LoopPlaybackDemo: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      {/* 使用 animation 实现 */}
+      <div className={styles.animationHorizontal}>
+        <div className={styles.animationScroll}>
+          { verticalData.map(item => (
+            <div 
+              className={styles.animationScrollItem} 
+              key={item.label}
+              style={{
+                backgroundColor: item.color,
+              }}
+            >
+              <span>{ item.label }</span>
+            </div>
+          )) }
+        </div>
+
+        {/* 需要两份数据，以此来起到无缝效果 */}
+        <div className={`${styles.animationScroll} ${styles.horizontalPosition}`}>
+          { verticalData.map(item => (
+            <div 
+              className={styles.animationScrollItem} 
+              key={item.label}
+              style={{
+                backgroundColor: item.color,
+              }}
+            >
+              <span>{ item.label }</span>
+            </div>
+          )) }
+        </div>
+
+      </div>
+
       {/* 
+        * 使用 insertRule 注入样式
         * 垂直 + 子项高度（或宽度）固定值例子
       */}
       <LoopPlayback
@@ -74,6 +108,7 @@ const LoopPlaybackDemo: React.FC = () => {
       </LoopPlayback>
 
       {/* 
+        * 使用 insertRule 注入样式
         * 水平 + 子项宽度（或高度）固定值
       */}
       <LoopPlayback

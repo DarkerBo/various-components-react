@@ -47,4 +47,44 @@
       }
     }
   }
+
+  .animationHorizontal {
+    height: 100px;
+    width: 400px;
+    border: 2px solid red;
+    margin-top: 300px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+
+    .animationScroll {
+      height: 100%;
+      display: flex;
+      animation: horizontal 5s linear infinite;
+
+      .animationScrollItem {
+        height: 100%;
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .horizontalPosition {
+      position: absolute;
+      left: -700px;
+    }
+  }
+
+  @keyframes horizontal {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(700px);
+    }
+  }
+
 }
